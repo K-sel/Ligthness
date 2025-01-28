@@ -8,7 +8,7 @@ import "notyf/notyf.min.css";
 const notyf = new Notyf();
 const main = document.querySelector("main");
 const form = document.querySelector("form");
-const input = document.querySelector("input");
+const inputHex = document.querySelector("input#hexCode");
 const header = document.querySelector("header");
 const body = document.querySelector("body");
 const root = document.documentElement;
@@ -25,7 +25,7 @@ const displayColors = ([...palette]) => {
 
   body.style.background = `linear-gradient(-45deg, #${first}, #${middle}, #${last})`;
   body.style.backgroundSize = `400% 400%`;
-  root.style.setProperty("--shadow-color", utils.hexToCSSHSL(input.value));
+  root.style.setProperty("--shadow-color", utils.hexToCSSHSL(inputHex.value));
   header.classList.add("minimized");
 
   palette.map((element) => new Colors(element).display(main));
@@ -33,11 +33,11 @@ const displayColors = ([...palette]) => {
 
 const handleForm = (e) => {
   e.preventDefault();
-  if (utils.isHexValue(input.value)) {
-    let palette = utils.generatePalette(input.value);
+  if (utils.isHexValue(inputHex.value)) {
+    let palette = utils.generatePalette(inputHex.value, 20);
     displayColors(palette);
   } else {
-    notyf.error(`${input.value} is not a valid Hexadecimal color`);
+    notyf.error(`${inputHex.value} is not a valid Hexadecimal color`);
   }
 };
 
