@@ -9,7 +9,7 @@ class Colors {
   }
 
   #generateElement() {
-    let textColor = this.#hsl[2] < 60 ? "rgb(255,255,255)" : "rgb(0,0,0)";
+    let textColor = this.#hsl[2] < 50 ? "rgb(255,255,255)" : "rgb(0,0,0)";
     this.#element = `<div class="color" data-color="#${
       this.#hex
     }" style="background-color: #${
