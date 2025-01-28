@@ -1,8 +1,8 @@
 import utils from "./modules/utils";
 import Colors from "./modules/colors";
 import convert from "color-convert";
-import { Notyf } from 'notyf';
-import 'notyf/notyf.min.css';
+import { Notyf } from "notyf";
+import "notyf/notyf.min.css";
 
 //Globales
 const notyf = new Notyf();
@@ -33,15 +33,11 @@ const displayColors = ([...palette]) => {
 
 const handleForm = (e) => {
   e.preventDefault();
-  try {
-    if (utils.isHexValue(input.value)) {
-      let palette = utils.generatePalette(input.value);
-      displayColors(palette);
-    } else {
-      throw new Error(`${input.value} is not a valid Hexadecimal color`);
-    }
-  } catch (error) {
-    notyf.error(error);
+  if (utils.isHexValue(input.value)) {
+    let palette = utils.generatePalette(input.value);
+    displayColors(palette);
+  } else {
+    notyf.error(`${input.value} is not a valid Hexadecimal color`);
   }
 };
 
