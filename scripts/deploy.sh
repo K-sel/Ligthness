@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Définition des couleurs ANSI
-GREEN="\e[32m"  # Vert
-RED="\e[31m"    # Rouge
-RESET="\e[0m"   # Réinitialisation des couleurs
+GREEN="\033[0;32m"  # Vert
+RED="\033[0;31m"    # Rouge
+RESET="\033[0m"     # Réinitialisation des couleurs
 
 # Vérification des arguments
 if [ -z "$1" ]; then
