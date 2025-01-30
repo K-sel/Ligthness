@@ -1,3 +1,4 @@
+//Imports
 import utils from "./modules/utils";
 import Colors from "./modules/colors";
 import convert from "color-convert";
