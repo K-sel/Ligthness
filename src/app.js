@@ -1,5 +1,5 @@
 //Imports
-import utils from "./modules/utils";
+import { generatePalette, isHexValue, hexToCSSHSL } from "./modules/utils";
 import Colors from "./modules/colors";
 import convert from "color-convert";
 import { Notyf } from "notyf";
@@ -26,7 +26,7 @@ const displayColors = ([...palette]) => {
 
   body.style.background = `linear-gradient(-45deg, #${first}, #${middle}, #${last})`;
   body.style.backgroundSize = `400% 400%`;
-  root.style.setProperty("--shadow-color", utils.hexToCSSHSL(inputHex.value));
+  root.style.setProperty("--shadow-color", hexToCSSHSL(inputHex.value));
   header.classList.add("minimized");
 
   palette.map((element) => new Colors(element).display(main));
@@ -34,8 +34,8 @@ const displayColors = ([...palette]) => {
 
 const handleForm = (e) => {
   e.preventDefault();
-  if (utils.isHexValue(inputHex.value)) {
-    let palette = utils.generatePalette(inputHex.value, 20);
+  if (isHexValue(inputHex.value)) {
+    let palette = generatePalette(inputHex.value, 20);
     displayColors(palette);
   } else {
     notyf.error(`${inputHex.value} is not a valid Hexadecimal color`);

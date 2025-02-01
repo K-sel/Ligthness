@@ -1,6 +1,5 @@
 import convert from "color-convert";
 
-export default {
   /**
    * Valide si une chaîne de caractères correspond à un code couleur hexadécimal valide.
    * Accepte les formats 3 caractères (#RGB) ou 6 caractères (#RRGGBB) avec le hashtag (#).
@@ -33,10 +32,10 @@ export default {
    *                       )        - Fin du groupe
    *                       $        - Fin de la chaîne
    */
-  isHexValue(input) {
+  export function isHexValue(input) {
     const regex = new RegExp("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$");
     return regex.test(input);
-  },
+  }
 
   /**
    * Génère une palette de couleurs HSL à partir d'une couleur hexadécimale.
@@ -62,7 +61,7 @@ export default {
    * @var {Array<Array<number>>} palette - Tableau final contenant toutes les nuances
    * @var {Array<number>} newHsl - Nouvelle couleur HSL créée à chaque itération
    */
-  generatePalette(hex, steps = 10) {
+  export function generatePalette(hex, steps = 10) {
     let hsl = convert.hex.hsl(hex);
     let incrementationRate = 100 / steps;
 
@@ -75,7 +74,7 @@ export default {
       palette.unshift(newHsl);
     }
     return palette;
-  },
+  }
 
   /**
    * Formate un tableau HSL en une chaîne CSS valide au format hsl().
@@ -100,8 +99,7 @@ export default {
    * `linear-gradient(${cssFormatForHsl([180, 50, 50])}, ${cssFormatForHsl([240, 60, 60])})`
    * // Résultat : linear-gradient(hsl(180deg 50% 50%), hsl(240deg 60% 60%))
    */
-  hexToCSSHSL(input) {
+  export function hexToCSSHSL(input) {
     let hsl = convert.hex.hsl(input)
     return `"hsl(${hsl[0]}deg ${hsl[1]}% ${hsl[2]}%)"`;
-  },
-};
+  }
